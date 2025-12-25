@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitCore Gym</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+body{background:#0f172a;color:#fff;line-height:1.6;}
+
+header{
+  min-height:100vh;
+  background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+  url("https://images.unsplash.com/photo-1558611848-73f7eb4001a1");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+
+header h1{font-size:3.5rem;}
+header p{margin:20px 0;font-size:1.2rem;}
+
+.btn{
+  display:inline-block;
+  padding:16px 44px;
+  background:linear-gradient(135deg,#0a1f44,#0b2d6b);
+  color:#ffffff;
+  text-decoration:none;
+  border-radius:50px;
+  font-weight:600;
+  box-shadow:0 15px 30px rgba(10,31,68,.45);
+  transition:.35s;
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-4px) scale(1.05);
+  background:linear-gradient(135deg,#0b2d6b,#123b8a);
+  box-shadow:0 20px 40px rgba(10,31,68,.65);
+}
+
+section{padding:80px 20px;max-width:1200px;margin:auto;}
+h2{text-align:center;margin-bottom:40px;font-size:2.5rem;}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.card{
+  background:#020617;
+  border-radius:20px;
+  overflow:hidden;
+  transition:.4s;
+}
+.card:hover{transform:translateY(-10px);}
+.card img{width:100%;height:220px;object-fit:cover;}
+.card div{padding:25px;}
+
+.cta{
+  background:linear-gradient(135deg,#38bdf8,#2563eb);
+  text-align:center;
+  border-radius:30px;
+  padding:70px 20px;
+  margin-top:60px;
+}
+.cta h2{color:#020617;}
+.cta .btn{background:#020617;}
+
+/* ===== MODAL CONTACT FORM ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+}
+.modal.active{display:flex;}
+
+.modal-box{
+  background:#020617;
+  padding:40px;
+  border-radius:20px;
+  max-width:500px;
+  width:90%;
+  position:relative;
+  animation:scaleIn .3s ease;
+}
+
+@keyframes scaleIn{
+  from{transform:scale(.8);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+.close{
+  position:absolute;
+  top:15px;
+  right:20px;
+  font-size:1.5rem;
+  cursor:pointer;
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:20px;
+}
+.contact-form input,
+.contact-form textarea{
+  padding:14px 18px;
+  border-radius:12px;
+  border:none;
+  outline:none;
+  font-size:1rem;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  background:#020617;
+  margin-top:80px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div>
+    <h1>FitCore Gym</h1>
+    <p>Transform your body with expert trainers & modern equipment</p>
+    <button class="btn" onclick="openForm()">Get Started</button>
+  </div>
+</header>
+
+<section id="services">
+  <h2>Our Programs</h2>
+  <div class="cards">
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e">
+      <div>
+        <h3>Personal Training</h3>
+        <p>One-on-one coaching tailored to your goals.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://media.istockphoto.com/id/1441694626/photo/hand-of-athlete-woman-holding-dumbbell-from-the-rack-in-the-gym-muscular-fitness-female.jpg?s=612x612&w=0&k=20&c=3aO01nsAa65hOIIRqNEdcPkJ_DH5v49C-CWsUH5PYww=">
+      <div>
+        <h3>Strength Training</h3>
+        <p>Build muscle with guided strength programs.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438">
+      <div>
+        <h3>Cardio Fitness</h3>
+        <p>Improve endurance & burn fat effectively.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to Start Your Fitness Journey?</h2>
+  <button class="btn" onclick="openForm()">Join Now</button>
+</section>
+
+<!-- CONTACT FORM MODAL -->
+<div class="modal" id="contactModal">
+  <div class="modal-box">
+    <span class="close" onclick="closeForm()">✖</span>
+    <h2>Contact Us</h2>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  © 2025 FitCore Gym | Website by Dharma
+</footer>
+
+<script>
+function openForm(){
+  document.getElementById("contactModal").classList.add("active");
+}
+function closeForm(){
+  document.getElementById("contactModal").classList.remove("active");
+}
+</script>
+
+</body>
+</html>
